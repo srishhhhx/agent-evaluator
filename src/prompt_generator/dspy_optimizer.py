@@ -5,16 +5,17 @@ from datetime import datetime
 import random
 
 # Add project root to path to allow absolute imports
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
 import dspy
 from src.prompt_generator.groq_lm import GroqDSPyLM
 
-# ... (rest of the file is the same)
+
 class CombinedPromptSignature(dspy.Signature):
     """DSPy signature: Takes two complexity objects → produces adversarial prompt."""
+
     complexities = dspy.InputField(desc="List of two normalized complexity findings")
     repo_name = dspy.InputField(desc="Repository name")
     prompt = dspy.OutputField(desc="Combined adversarial developer prompt")
@@ -54,11 +55,17 @@ class DSPyPromptGenerator:
                 files = c["details"]["imports"]
                 lines.append(f"- Circular import between `{files[0]}` and `{files[1]}`")
             elif t == "high_complexity":
-                lines.append(f"- Function `{c['function']}` in `{c['file']}` has very high branching complexity")
+                lines.append(
+                    f"- Function `{c['function']}` in `{c['file']}` has very high branching complexity"
+                )
             elif t == "implicit_state":
-                lines.append(f"- Hidden mutable global state `{c['details']['variable']}` in `{c['file']}` impacting execution behavior")
+                lines.append(
+                    f"- Hidden mutable global state `{c['details']['variable']}` in `{c['file']}` impacting execution behavior"
+                )
             elif t == "overloaded_api":
-                lines.append(f"- Overloaded API `{c['function']}` in `{c['file']}` with {c['details']['parameters']} params and {c['details']['branches']} branches")
+                lines.append(
+                    f"- Overloaded API `{c['function']}` in `{c['file']}` with {c['details']['parameters']} params and {c['details']['branches']} branches"
+                )
         return "\n".join(lines)
 
     def _generate_prompt_text(self, repo_name, complexities):
@@ -110,7 +117,8 @@ Deliverables:
             },
         }
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     from src.parser.repo_analyzer import RepoAnalyzer, select_and_normalize_issues
     from pathlib import Path
 
