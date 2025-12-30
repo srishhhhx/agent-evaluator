@@ -1,0 +1,986 @@
+[
+  {
+    "test_id": "test_3e303b76",
+    "timestamp": "2025-12-28T14:03:42.422551",
+    "source_issue": {
+      "type": "high_complexity",
+      "file": "app/modules/utils/gvisor_runner.py",
+      "context": "Function '_filter_safe_environment_variables' has a high complexity score of 15 at line 76."
+    },
+    "prompt": "Write a Python function that takes a list of conditional statements as input, where each statement is a dictionary containing a condition, a list of actions, and a list of subsequent conditions. The function should evaluate the conditions in a specific order, perform the corresponding actions, and then proceed to the next condition based on the outcome of the previous condition. The function should also handle nested conditions and recursive loops. Oh, and by the way, the input list is not guaranteed to be ordered, and the conditions may be dependent on each other in complex ways. Can you write a function that can handle all these complexities and still manage to terminate in a reasonable amount of time?",
+    "agent_result": {
+      "success": true,
+      "duration_seconds": 95.31,
+      "files_modified": 0,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_e08a90e6",
+    "timestamp": "2025-12-28T14:04:36.252219",
+    "source_issue": {
+      "type": "high_complexity",
+      "file": "app/modules/conversations/access/access_service.py",
+      "context": "Function 'share_chat' has a high complexity score of 11 at line 22."
+    },
+    "prompt": "Write a function to calculate the cyclomatic complexity of a given piece of code. However, the twist is that the code to be analyzed is stored in a database, and the database connection details are provided in an environment variable named \"DB_CONNECTION_STRING\" which is encrypted. The decryption key is stored in a file on a remote server, accessible via SSH using a private key that is password-protected. The password to the private key is the MD5 hash of the string \"cyclomaticComplexity\". Once you've established the database connection, you need to execute a query that selects the code from the table named \"code_snippets\" where the column \"language\" equals \"Python\". After obtaining the code, implement the cyclomatic complexity calculation using the following formula: M = E - N + 2P, where M is the complexity, E is the number of edges, N is the number of nodes, and P is the number of connected components. However, to make things more interesting, assume that the control flow graph of the program has been modified to include \"meta-nodes\" which represent complex conditional statements and should be counted as two nodes but only one edge. Additionally, the program may contain \"super(edges)\" that connect a node directly to the exit node, and these should be counted as half an edge.",
+    "agent_result": {
+      "success": true,
+      "duration_seconds": 53.22,
+      "files_modified": 0,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_ef0fa4b9",
+    "timestamp": "2025-12-28T14:06:07.822985",
+    "source_issue": {
+      "type": "high_complexity",
+      "file": "app/modules/intelligence/tools/code_query_tools/code_analysis.py",
+      "context": "Function 'get_tags_raw' has a high complexity score of 26 at line 89."
+    },
+    "prompt": "Write a function that determines the maximum cyclomatic complexity of a given piece of code. The function should take as input a string representing the code and return the cyclomatic complexity as an integer. However, the function should only count conditional statements (if, elif, else) and loops (for, while) that are not nested within other control structures. Additionally, the function should ignore any control structures that are commented out. The code string may contain multiple lines and may include comments that start with the '#' symbol.",
+    "agent_result": {
+      "success": true,
+      "duration_seconds": 90.98,
+      "files_modified": 0,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_191c480f",
+    "timestamp": "2025-12-29T07:24:35.177036",
+    "source_complexities": [
+      {
+        "type": "high_complexity",
+        "file": "app/modules/code_provider/github/github_service.py",
+        "function": "get_repos_for_user",
+        "details": {
+          "complexity_score": 52,
+          "lineno": 267,
+          "end_lineno": null
+        }
+      },
+      {
+        "type": "implicit_state",
+        "file": "app/modules/code_provider/github/github_service.py",
+        "details": {
+          "variable": "logger",
+          "line": 32,
+          "state_type": "module_singleton"
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `potpie` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Function `get_repos_for_user` in `app/modules/code_provider/github/github_service.py` has very high branching complexity\n- Hidden mutable global state `logger` in `app/modules/code_provider/github/github_service.py` impacting execution behavior\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 190.57,
+      "files_modified_count": 1,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_fa6da03c",
+    "timestamp": "2025-12-29T07:32:15.042835",
+    "source_complexities": [
+      {
+        "type": "high_complexity",
+        "file": "high_complex.py",
+        "function": "validate_user_permissions",
+        "details": {
+          "complexity_score": 17,
+          "lineno": 76,
+          "end_lineno": null
+        }
+      },
+      {
+        "type": "high_complexity",
+        "file": "high_complex.py",
+        "function": "super_complex_decision_tree",
+        "details": {
+          "complexity_score": 15,
+          "lineno": 6,
+          "end_lineno": null
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Function `validate_user_permissions` in `high_complex.py` has very high branching complexity\n- Function `super_complex_decision_tree` in `high_complex.py` has very high branching complexity\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 97.63,
+      "files_modified_count": 0,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_8c9f3ea4",
+    "timestamp": "2025-12-29T07:47:38.023974",
+    "source_complexities": [
+      {
+        "type": "implicit_state",
+        "file": "implicit_state.py",
+        "details": {
+          "variable": "app_config",
+          "line": 18,
+          "state_type": "module_singleton"
+        }
+      },
+      {
+        "type": "high_complexity",
+        "file": "high_complex.py",
+        "function": "process_nested_data",
+        "details": {
+          "complexity_score": 11,
+          "lineno": 49,
+          "end_lineno": null
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Hidden mutable global state `app_config` in `implicit_state.py` impacting execution behavior\n- Function `process_nested_data` in `high_complex.py` has very high branching complexity\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 111.24,
+      "files_modified_count": 0,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_3d4b37b0",
+    "timestamp": "2025-12-29T07:56:44.913901",
+    "source_complexities": [
+      {
+        "type": "implicit_state",
+        "file": "src/flask/sansio/blueprints.py",
+        "details": {
+          "variable": "T_url_defaults",
+          "line": 28,
+          "state_type": "module_singleton"
+        }
+      },
+      {
+        "type": "implicit_state",
+        "file": "src/flask/sansio/blueprints.py",
+        "details": {
+          "variable": "T_after_request",
+          "line": 18,
+          "state_type": "module_singleton"
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `flask` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Hidden mutable global state `T_url_defaults` in `src/flask/sansio/blueprints.py` impacting execution behavior\n- Hidden mutable global state `T_after_request` in `src/flask/sansio/blueprints.py` impacting execution behavior\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": false,
+      "duration_seconds": 300,
+      "files_modified_count": 0,
+      "exit_code": -1
+    }
+  },
+  {
+    "test_id": "test_8ef22b2e",
+    "timestamp": "2025-12-29T09:27:42.803136",
+    "source_complexities": [
+      {
+        "type": "implicit_state",
+        "file": "docs/conf.py",
+        "details": {
+          "variable": "latex_elements",
+          "line": 235,
+          "state_type": "module_singleton"
+        }
+      },
+      {
+        "type": "implicit_state",
+        "file": "src/requests/status_codes.py",
+        "details": {
+          "variable": "__doc__",
+          "line": 120,
+          "state_type": "mutable_global"
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `requests` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Hidden mutable global state `latex_elements` in `docs/conf.py` impacting execution behavior\n- Hidden mutable global state `__doc__` in `src/requests/status_codes.py` impacting execution behavior\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 229.65,
+      "files_modified_count": 2,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_419cd0ff",
+    "timestamp": "2025-12-29T22:19:16.191437",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 75,
+    "source_complexities": [
+      {
+        "type": "high_complexity",
+        "file": "high_complex.py",
+        "function": "process_nested_data",
+        "details": {
+          "complexity_score": 11,
+          "lineno": 49,
+          "end_lineno": null
+        }
+      },
+      {
+        "type": "overloaded_api",
+        "file": "high_complex.py",
+        "function": "validate_user_permissions",
+        "details": {
+          "line": 76,
+          "parameters": 3,
+          "branches": 6
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Function `process_nested_data` in `high_complex.py` has very high branching complexity\n- Overloaded API `validate_user_permissions` in `high_complex.py` with 3 params and 6 branches\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 128.19,
+      "files_modified_count": 0,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_a6fefdad",
+    "timestamp": "2025-12-29T22:28:50.746941",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 75,
+    "source_complexities": [
+      {
+        "type": "overloaded_api",
+        "file": "high_complex.py",
+        "function": "process_nested_data",
+        "details": {
+          "line": 49,
+          "parameters": 1,
+          "branches": 9
+        }
+      },
+      {
+        "type": "implicit_state",
+        "file": "implicit_state.py",
+        "details": {
+          "variable": "request_counter",
+          "line": 34,
+          "state_type": "mutable_global"
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Overloaded API `process_nested_data` in `high_complex.py` with 1 params and 9 branches\n- Hidden mutable global state `request_counter` in `implicit_state.py` impacting execution behavior\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 73.96,
+      "files_modified_count": 0,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_619c5f20",
+    "timestamp": "2025-12-29T22:52:16.508431",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 75,
+    "source_complexities": [
+      {
+        "type": "overloaded_api",
+        "file": "high_complex.py",
+        "function": "super_complex_decision_tree",
+        "details": {
+          "line": 6,
+          "parameters": 2,
+          "branches": 14
+        }
+      },
+      {
+        "type": "high_complexity",
+        "file": "high_complex.py",
+        "function": "validate_user_permissions",
+        "details": {
+          "complexity_score": 17,
+          "lineno": 76,
+          "end_lineno": null
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Overloaded API `super_complex_decision_tree` in `high_complex.py` with 2 params and 14 branches\n- Function `validate_user_permissions` in `high_complex.py` has very high branching complexity\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 120.0,
+      "files_modified_count": 0,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_bcce909c",
+    "timestamp": "2025-12-29T23:06:18.504885",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 75,
+    "source_complexities": [
+      {
+        "type": "overloaded_api",
+        "file": "overloaded_api.py",
+        "function": "function_with_many_params",
+        "details": {
+          "line": 6,
+          "parameters": 8,
+          "branches": 1
+        }
+      },
+      {
+        "type": "overloaded_api",
+        "file": "high_complex.py",
+        "function": "validate_user_permissions",
+        "details": {
+          "line": 76,
+          "parameters": 3,
+          "branches": 6
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Overloaded API `function_with_many_params` in `overloaded_api.py` with 8 params and 1 branches\n- Overloaded API `validate_user_permissions` in `high_complex.py` with 3 params and 6 branches\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 139.51,
+      "files_modified_count": 0,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_206e834d",
+    "timestamp": "2025-12-29T23:08:48.098135",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 75,
+    "source_complexities": [
+      {
+        "type": "circular_import",
+        "file": "circular_b.py",
+        "details": {
+          "imports": [
+            "circular_b.py",
+            "circular_a.py"
+          ]
+        }
+      },
+      {
+        "type": "implicit_state",
+        "file": "implicit_state.py",
+        "details": {
+          "variable": "active_users",
+          "line": 11,
+          "state_type": "module_singleton"
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Circular import between `circular_b.py` and `circular_a.py`\n- Hidden mutable global state `active_users` in `implicit_state.py` impacting execution behavior\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 123.19,
+      "files_modified_count": 0,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_545a6396",
+    "timestamp": "2025-12-29T23:17:17.778144",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 75,
+    "source_complexities": [
+      {
+        "type": "implicit_state",
+        "file": "implicit_state.py",
+        "details": {
+          "variable": "app_config",
+          "line": 18,
+          "state_type": "module_singleton"
+        }
+      },
+      {
+        "type": "high_complexity",
+        "file": "high_complex.py",
+        "function": "validate_user_permissions",
+        "details": {
+          "complexity_score": 17,
+          "lineno": 76,
+          "end_lineno": null
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Hidden mutable global state `app_config` in `implicit_state.py` impacting execution behavior\n- Function `validate_user_permissions` in `high_complex.py` has very high branching complexity\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 179.92,
+      "files_modified_count": 0,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_e3dab7c6",
+    "timestamp": "2025-12-29T23:21:05.670319",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 75,
+    "source_complexities": [
+      {
+        "type": "overloaded_api",
+        "file": "overloaded_api.py",
+        "function": "function_with_many_branches",
+        "details": {
+          "line": 26,
+          "parameters": 2,
+          "branches": 8
+        }
+      },
+      {
+        "type": "circular_import",
+        "file": "circular_b.py",
+        "details": {
+          "imports": [
+            "circular_b.py",
+            "circular_a.py"
+          ]
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Overloaded API `function_with_many_branches` in `overloaded_api.py` with 2 params and 8 branches\n- Circular import between `circular_b.py` and `circular_a.py`\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 99.35,
+      "files_modified_count": 0,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_774e8ba0",
+    "timestamp": "2025-12-30T00:30:11.426496",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 75,
+    "source_complexities": [
+      {
+        "type": "overloaded_api",
+        "file": "high_complex.py",
+        "function": "super_complex_decision_tree",
+        "details": {
+          "line": 6,
+          "parameters": 2,
+          "branches": 14
+        }
+      },
+      {
+        "type": "implicit_state",
+        "file": "implicit_state.py",
+        "details": {
+          "variable": "active_users",
+          "line": 11,
+          "state_type": "module_singleton"
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Overloaded API `super_complex_decision_tree` in `high_complex.py` with 2 params and 14 branches\n- Hidden mutable global state `active_users` in `implicit_state.py` impacting execution behavior\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 97.66,
+      "files_modified_count": 0,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_14cfcc91",
+    "timestamp": "2025-12-30T00:37:59.566547",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 75,
+    "source_complexities": [
+      {
+        "type": "overloaded_api",
+        "file": "overloaded_api.py",
+        "function": "function_with_many_branches",
+        "details": {
+          "line": 26,
+          "parameters": 2,
+          "branches": 8
+        }
+      },
+      {
+        "type": "high_complexity",
+        "file": "high_complex.py",
+        "function": "super_complex_decision_tree",
+        "details": {
+          "complexity_score": 15,
+          "lineno": 6,
+          "end_lineno": null
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Overloaded API `function_with_many_branches` in `overloaded_api.py` with 2 params and 8 branches\n- Function `super_complex_decision_tree` in `high_complex.py` has very high branching complexity\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 47.86,
+      "files_modified_count": 0,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_22adab91",
+    "timestamp": "2025-12-30T01:35:55.329132",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 90,
+    "source_complexities": [
+      {
+        "type": "implicit_state",
+        "file": "implicit_state.py",
+        "details": {
+          "variable": "active_users",
+          "line": 11,
+          "state_type": "module_singleton"
+        }
+      },
+      {
+        "type": "overloaded_api",
+        "file": "high_complex.py",
+        "function": "process_nested_data",
+        "details": {
+          "line": 49,
+          "parameters": 1,
+          "branches": 9
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Hidden mutable global state `active_users` in `implicit_state.py` impacting execution behavior\n- Overloaded API `process_nested_data` in `high_complex.py` with 1 params and 9 branches\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": false,
+      "duration_seconds": 22.24,
+      "files_modified_count": 0,
+      "exit_code": 1
+    }
+  },
+  {
+    "test_id": "test_gemini_6048bddf",
+    "timestamp": "2025-12-30T03:36:53.616684",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 75,
+    "source_complexities": [
+      {
+        "type": "overloaded_api",
+        "file": "overloaded_api.py",
+        "function": "function_with_many_params",
+        "details": {
+          "line": 6,
+          "parameters": 8,
+          "branches": 1
+        }
+      },
+      {
+        "type": "overloaded_api",
+        "file": "high_complex.py",
+        "function": "validate_user_permissions",
+        "details": {
+          "line": 76,
+          "parameters": 3,
+          "branches": 6
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Overloaded API `function_with_many_params` in `overloaded_api.py` with 8 params and 1 branches\n- Overloaded API `validate_user_permissions` in `high_complex.py` with 3 params and 6 branches\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 111.62,
+      "files_modified_count": 0,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_98074704",
+    "timestamp": "2025-12-30T03:43:51.788350",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 7,
+    "source_complexities": [
+      {
+        "type": "circular_import",
+        "file": "circular_b.py",
+        "details": {
+          "imports": [
+            "circular_b.py",
+            "circular_a.py"
+          ]
+        }
+      },
+      {
+        "type": "implicit_state",
+        "file": "implicit_state.py",
+        "details": {
+          "variable": "active_users",
+          "line": 11,
+          "state_type": "module_singleton"
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Circular import between `circular_b.py` and `circular_a.py`\n- Hidden mutable global state `active_users` in `implicit_state.py` impacting execution behavior\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 130.35,
+      "files_modified_count": 5,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_09064a0c",
+    "timestamp": "2025-12-30T13:37:01.712661",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 24,
+    "source_complexities": [
+      {
+        "type": "high_complexity",
+        "file": "high_complex.py",
+        "function": "process_nested_data",
+        "details": {
+          "complexity_score": 11,
+          "lineno": 49,
+          "end_lineno": null
+        }
+      },
+      {
+        "type": "high_complexity",
+        "file": "high_complex.py",
+        "function": "validate_user_permissions",
+        "details": {
+          "complexity_score": 17,
+          "lineno": 76,
+          "end_lineno": null
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Function `process_nested_data` in `high_complex.py` has very high branching complexity\n- Function `validate_user_permissions` in `high_complex.py` has very high branching complexity\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 108.35,
+      "files_modified_count": 1,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_184fc9c3",
+    "timestamp": "2025-12-30T13:51:43.770823",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 2,
+    "source_complexities": [
+      {
+        "type": "implicit_state",
+        "file": "implicit_state.py",
+        "details": {
+          "variable": "request_counter",
+          "line": 34,
+          "state_type": "mutable_global"
+        }
+      },
+      {
+        "type": "implicit_state",
+        "file": "implicit_state.py",
+        "details": {
+          "variable": "app_config",
+          "line": 18,
+          "state_type": "module_singleton"
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Hidden mutable global state `request_counter` in `implicit_state.py` impacting execution behavior\n- Hidden mutable global state `app_config` in `implicit_state.py` impacting execution behavior\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 87.27,
+      "files_modified_count": 1,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_32d586e2",
+    "timestamp": "2025-12-30T13:57:55.742946",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 70,
+    "source_complexities": [
+      {
+        "type": "overloaded_api",
+        "file": "overloaded_api.py",
+        "function": "function_with_many_params",
+        "details": {
+          "line": 6,
+          "parameters": 8,
+          "branches": 1
+        }
+      },
+      {
+        "type": "high_complexity",
+        "file": "high_complex.py",
+        "function": "validate_user_permissions",
+        "details": {
+          "complexity_score": 17,
+          "lineno": 76,
+          "end_lineno": null
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Overloaded API `function_with_many_params` in `overloaded_api.py` with 8 params and 1 branches\n- Function `validate_user_permissions` in `high_complex.py` has very high branching complexity\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 122.65,
+      "files_modified_count": 2,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_3923c924",
+    "timestamp": "2025-12-30T14:04:53.272633",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 80,
+    "source_complexities": [
+      {
+        "type": "high_complexity",
+        "file": "high_complex.py",
+        "function": "process_nested_data",
+        "details": {
+          "complexity_score": 11,
+          "lineno": 49,
+          "end_lineno": null
+        }
+      },
+      {
+        "type": "implicit_state",
+        "file": "implicit_state.py",
+        "details": {
+          "variable": "request_counter",
+          "line": 34,
+          "state_type": "mutable_global"
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Function `process_nested_data` in `high_complex.py` has very high branching complexity\n- Hidden mutable global state `request_counter` in `implicit_state.py` impacting execution behavior\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 66.69,
+      "files_modified_count": 2,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_d2ed0853",
+    "timestamp": "2025-12-30T14:24:22.450412",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 80,
+    "source_complexities": [
+      {
+        "type": "high_complexity",
+        "file": "high_complex.py",
+        "function": "process_nested_data",
+        "details": {
+          "complexity_score": 11,
+          "lineno": 49,
+          "end_lineno": null
+        }
+      },
+      {
+        "type": "implicit_state",
+        "file": "implicit_state.py",
+        "details": {
+          "variable": "app_config",
+          "line": 18,
+          "state_type": "module_singleton"
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Function `process_nested_data` in `high_complex.py` has very high branching complexity\n- Hidden mutable global state `app_config` in `implicit_state.py` impacting execution behavior\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 111.3,
+      "files_modified_count": 2,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_07336193",
+    "timestamp": "2025-12-30T14:38:54.658691",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 80,
+    "source_complexities": [
+      {
+        "type": "implicit_state",
+        "file": "implicit_state.py",
+        "details": {
+          "variable": "request_counter",
+          "line": 34,
+          "state_type": "mutable_global"
+        }
+      },
+      {
+        "type": "high_complexity",
+        "file": "high_complex.py",
+        "function": "super_complex_decision_tree",
+        "details": {
+          "complexity_score": 15,
+          "lineno": 6,
+          "end_lineno": null
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Hidden mutable global state `request_counter` in `implicit_state.py` impacting execution behavior\n- Function `super_complex_decision_tree` in `high_complex.py` has very high branching complexity\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 87.33,
+      "files_modified_count": 2,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_021c88ab",
+    "timestamp": "2025-12-30T14:45:26.447994",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 60,
+    "source_complexities": [
+      {
+        "type": "overloaded_api",
+        "file": "high_complex.py",
+        "function": "validate_user_permissions",
+        "details": {
+          "line": 76,
+          "parameters": 3,
+          "branches": 6
+        }
+      },
+      {
+        "type": "implicit_state",
+        "file": "implicit_state.py",
+        "details": {
+          "variable": "app_config",
+          "line": 18,
+          "state_type": "module_singleton"
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Overloaded API `validate_user_permissions` in `high_complex.py` with 3 params and 6 branches\n- Hidden mutable global state `app_config` in `implicit_state.py` impacting execution behavior\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 20.95,
+      "files_modified_count": 0,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_884caff0",
+    "timestamp": "2025-12-30T14:49:58.851068",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 80,
+    "source_complexities": [
+      {
+        "type": "implicit_state",
+        "file": "implicit_state.py",
+        "details": {
+          "variable": "app_config",
+          "line": 18,
+          "state_type": "module_singleton"
+        }
+      },
+      {
+        "type": "high_complexity",
+        "file": "high_complex.py",
+        "function": "process_nested_data",
+        "details": {
+          "complexity_score": 11,
+          "lineno": 49,
+          "end_lineno": null
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Hidden mutable global state `app_config` in `implicit_state.py` impacting execution behavior\n- Function `process_nested_data` in `high_complex.py` has very high branching complexity\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 101.37,
+      "files_modified_count": 2,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_50cc2ca4",
+    "timestamp": "2025-12-30T15:06:28.292820",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 80,
+    "source_complexities": [
+      {
+        "type": "implicit_state",
+        "file": "implicit_state.py",
+        "details": {
+          "variable": "request_counter",
+          "line": 34,
+          "state_type": "mutable_global"
+        }
+      },
+      {
+        "type": "implicit_state",
+        "file": "implicit_state.py",
+        "details": {
+          "variable": "active_users",
+          "line": 11,
+          "state_type": "module_singleton"
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Hidden mutable global state `request_counter` in `implicit_state.py` impacting execution behavior\n- Hidden mutable global state `active_users` in `implicit_state.py` impacting execution behavior\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 108.96,
+      "files_modified_count": 1,
+      "exit_code": 0
+    }
+  },
+  {
+    "test_id": "test_gemini_0a11fcd8",
+    "timestamp": "2025-12-30T15:11:13.800646",
+    "agent_type": "gemini",
+    "repo_name": "potpie",
+    "confusion_score": 90,
+    "source_complexities": [
+      {
+        "type": "high_complexity",
+        "file": "app/modules/intelligence/tools/code_changes_manager.py",
+        "function": "show_updated_file_tool",
+        "details": {
+          "complexity_score": 12,
+          "lineno": 1895,
+          "end_lineno": null
+        }
+      },
+      {
+        "type": "circular_import",
+        "file": "app/celery/celery_app.py",
+        "details": {
+          "imports": [
+            "app/celery/celery_app.py",
+            "app/modules/event_bus/tasks/event_tasks.py"
+          ]
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `potpie` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Function `show_updated_file_tool` in `app/modules/intelligence/tools/code_changes_manager.py` has very high branching complexity\n- Circular import between `app/celery/celery_app.py` and `app/modules/event_bus/tasks/event_tasks.py`\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 103.14,
+      "files_modified_count": 4,
+      "exit_code": 0
+    }
+  }
+]

@@ -1,0 +1,17 @@
+# Core dependencies for the agent testing framework
+
+# For code analysis and complexity metrics
+radon
+
+# For programmatic prompt engineering and optimization
+dspy-ai
+
+# LLM provider libraries
+openai
+google-generativeai
+langchain
+langchain_community
+langchain_openai
+
+# For environment variable management
+python-dotenv

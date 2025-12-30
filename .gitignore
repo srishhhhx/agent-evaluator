@@ -1,0 +1,36 @@
+# Python virtual environment
+venv/
+.venv/
+
+# Environment variables
+.env
+
+# Results and artifacts
+results/artifacts
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE and editor specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignored data repositories
+data/repos/django/
+data/repos/fastapi/
+data/repos/flask/
+data/repos/potpie/
+data/repos/requests/
+
+# Ignored directories
+tests/
+docs/
