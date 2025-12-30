@@ -185,3 +185,22 @@ agent-evaluator/
 └── docs/
     └── ...                    # Additional documentation
 ```
+## 9. Future Enhancements
+    4 
+    5 This project lays the groundwork for a robust AI agent evaluation framework. Several areas are ripe for 
+      future development:
+    6 
+    7 *   **Expanded Complexity Detectors**: Implement additional detectors for other code quality issues, suc
+      as security vulnerabilities, performance bottlenecks, or non-idiomatic code patterns.
+    8 *   **Support for Multiple Languages**: Extend the `RepoAnalyzer` and `RepoSandbox` to support other 
+      programming languages beyond Python.
+    9 *   **Advanced Prompt Generation**: Develop more sophisticated prompt generation techniques using advanc
+      LLM capabilities to create even more challenging and nuanced adversarial tasks.
+   10 *   **Refined Scoring Metrics**: Introduce more granular behavioral scoring metrics, potentially 
+      incorporating agent output analysis (e.g., diff analysis for semantic correctness) or user feedback.
+   11 *   **Interactive Visualization of Results**: Create an interactive web interface for visualizing test 
+      results, confusion scores, and agent performance trends over time.
+   12 *   **Integration with CI/CD**: Integrate the evaluation pipeline into continuous integration/continuous
+      deployment (CI/CD) workflows to automatically benchmark agents on new code changes.
+   13 *   **Support for Diverse Agents**: Extend `GeminiRunner` to support a wider range of AI coding agents 
+      (e.g., GPT-based agents, open-source models).
