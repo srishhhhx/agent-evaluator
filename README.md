@@ -1,6 +1,6 @@
 # Agent Evaluator
 
-An automated pipeline for creating behavioral benchmarks for AI coding agents. This project evaluates agents based on their ability to resolve complex, programmatically generated code issues in a sandboxed environment.
+An automated pipeline providing a programmatic approach to build confusing prompts for coding agents, using tools like DSPy, and observability tools like OTel and Arize Phoenix.
 
 ---
 
@@ -12,7 +12,9 @@ An automated pipeline for creating behavioral benchmarks for AI coding agents. T
 4. [Tech Stack](#4-tech-stack)
 5. [Observability](#5-observability)
 6. [How to Run](#6-how-to-run)
-7. [Repository Structure](#7-repository-structure)
+7. [Example Output](#7-example-output)
+8. [Repository Structure](#8-repository-structure)
+9. [Future Enhancements](#9-future-enhancements)
 
 ---
 
@@ -25,8 +27,6 @@ This project provides a robust framework for benchmarking the performance of AI 
 ## 2. Pipeline Diagram
 
 ![Pipeline Diagram](assets/Pipeline.png)
-
-*Complete insights on my approach in [approach.md](approach/approach.md)*
 
 ---
 
@@ -111,7 +111,7 @@ Execute the `run_mvp.py` script and point it to a repository in the `data/repos/
 
 **Example**:
 ```bash
-python run_mvp.py --repo data/repos/potpie
+python run_mvp.py --repo data/repos/synthcomplex
 ```
 
 The results of the run, including the confusion score and generated prompt, will be saved in the `results/` directory.
@@ -120,7 +120,7 @@ The results of the run, including the confusion score and generated prompt, will
 
 ## 7. Example Output
 
-The `test_results.json` file contains a list of test runs with the following structure:
+The [`test_results.json`](results/test_results.json) file contains a list of test runs with the following structure:
 
 ```json
 {
