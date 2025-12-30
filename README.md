@@ -24,7 +24,7 @@ This project provides a robust framework for benchmarking the performance of AI 
 
 ## 2. Pipeline Diagram
 
-![Pipeline Diagram](assets/pipeline.png)
+![Pipeline Diagram](assets/Pipeline.png)
 
 *Complete insights on my approach in [approach.md](approach/approach.md)*
 
