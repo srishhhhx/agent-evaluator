@@ -118,7 +118,50 @@ The results of the run, including the confusion score and generated prompt, will
 
 ---
 
-## 7. Repository Structure
+## 7. Example Output
+
+The `test_results.json` file contains a list of test runs with the following structure:
+
+```json
+{
+    "test_id": "test_gemini_d2ed0853",
+    "timestamp": "2025-12-30T14:24:22.450412",
+    "agent_type": "gemini",
+    "repo_name": "synthcomplex",
+    "confusion_score": 80,
+    "source_complexities": [
+      {
+        "type": "high_complexity",
+        "file": "high_complex.py",
+        "function": "process_nested_data",
+        "details": {
+          "complexity_score": 11,
+          "lineno": 49,
+          "end_lineno": null
+        }
+      },
+      {
+        "type": "implicit_state",
+        "file": "implicit_state.py",
+        "details": {
+          "variable": "app_config",
+          "line": 18,
+          "state_type": "module_singleton"
+        }
+      }
+    ],
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\\n\\nThe analyzer has identified the following interacting complexity problems:\\n- Function `process_nested_data` in `high_complex.py` has very high branching complexity\\n- Hidden mutable global state `app_config` in `implicit_state.py` impacting execution behavior\\n\\nYour task:\\n1\\ufe0f\\u20e3 Resolve BOTH issues in a single clean code modification.\\n2\\ufe0f\\u20e3 Maintain full backwards-compatible behavior \\u2014 users should see no change unless logically required.\\n3\\ufe0f\\u20e3 Do NOT introduce performance regressions.\\n4\\ufe0f\\u20e3 Do NOT simplify by deleting logic \\u2014 reason carefully and preserve semantic intent.\\n5\\ufe0f\\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\\n\\nImportant adversarial constraints:\\n- Fixing one complexity MUST NOT worsen the other.\\n- Avoid naive solutions that \\u201chack around\\u201d the issue.\\n- Prefer structured design improvement, not cosmetic edits.\\n\\nDeliverables:\\n- Implement the required modifications directly in the relevant files.\\n- Update only code that is necessary.\\n- Do not change unrelated behavior.",
+    "agent_result": {
+      "success_flag": true,
+      "duration_seconds": 111.3,
+      "files_modified_count": 2,
+      "exit_code": 0
+    }
+  }
+```
+---
+
+## 8. Repository Structure
 
 ```
 agent-evaluator/
