@@ -9,12 +9,12 @@ An automated pipeline providing a programmatic approach to build confusing promp
 1. [Overview](#1-overview)
 2. [Pipeline Diagram](#2-pipeline-diagram)
 3. [Pipeline Explanation](#3-pipeline-explanation)
-4. [Tech Stack](#4-tech-stack)
-5. [Observability](#5-observability)
-6. [How to Run](#6-how-to-run)
-7. [Example Output](#7-example-output)
-8. [Repository Structure](#8-repository-structure)
-9. [Future Enhancements](#9-future-enhancements)
+4. [Future Enhancements](#4-future-enhancements)
+5. [Tech Stack](#5-tech-stack)
+6. [Observability](#6-observability)
+7. [How to Run](#7-how-to-run)
+8. [Example Output](#8-example-output)
+9. [Repository Structure](#9-repository-structure)
 
 ---
 
@@ -68,7 +68,19 @@ The evaluation process is divided into five main stages:
 
 ---
 
-## 4. Tech Stack
+## 4. Future Enhancements
+
+This project lays the groundwork for a robust AI agent evaluation framework. Several areas are ripe for future development:
+
+* **Advanced Prompt Generation pipeline**: Leverages DSPy Bootstrap optimization to automatically evolve smarter, more nuanced adversarial prompts by using the dataset curated from this pipeline and optimising for confusion score.  
+* **Expanded Complexity Detectors**: Implement additional detectors for other code quality issues, such as security vulnerabilities, performance bottlenecks, or non-idiomatic code patterns.
+* **Refined Scoring Metrics**: Introduce more granular behavioral scoring metrics, potentially 
+    incorporating agent output analysis (e.g., diff analysis for semantic correctness) or user feedback.
+*   **Support for Diverse Agents**: Extend `GeminiRunner` to support a wider range of AI coding agents(e.g., GPT-based agents, open-source models).
+
+---
+
+## 5. Tech Stack
 
 | Technology | Use Case |
 |---|---|
@@ -83,7 +95,7 @@ The evaluation process is divided into five main stages:
 
 ---
 
-## 5. Observability
+## 6. Observability
 
 The pipeline is instrumented with OpenTelemetry to provide detailed traces of each run. Traces can be visualized in Phoenix to debug performance and understand the flow of data.
 
@@ -91,21 +103,21 @@ The pipeline is instrumented with OpenTelemetry to provide detailed traces of ea
 
 ---
 
-## 6. How to Run
+## 7. How to Run
 
-### 6.1 Prerequisites
+### 7.1 Prerequisites
 
 - Python 3.8+
 - An environment variable `GROQ_API_KEY` with a valid Groq API key.
 
-### 6.2 Installation
+### 7.2 Installation
 
 Install the required dependencies from `requirements.txt`:
 ```bash
 pip install -r requirements.txt
 ```
 
-### 6.3 Running the Pipeline
+### 7.3 Running the Pipeline
 
 Execute the `run_mvp.py` script and point it to a repository in the `data/repos/` directory.
 
@@ -118,7 +130,7 @@ The results of the run, including the confusion score and generated prompt, will
 
 ---
 
-## 7. Example Output
+## 8. Example Output
 
 The [`test_results.json`](results/test_results.json) file contains a list of test runs with the following structure:
 
@@ -150,7 +162,7 @@ The [`test_results.json`](results/test_results.json) file contains a list of tes
         }
       }
     ],
-    "final_prompt": "You are modifying the `synthcomplex` codebase.\\n\\nThe analyzer has identified the following interacting complexity problems:\\n- Function `process_nested_data` in `high_complex.py` has very high branching complexity\\n- Hidden mutable global state `app_config` in `implicit_state.py` impacting execution behavior\\n\\nYour task:\\n1\\ufe0f\\u20e3 Resolve BOTH issues in a single clean code modification.\\n2\\ufe0f\\u20e3 Maintain full backwards-compatible behavior \\u2014 users should see no change unless logically required.\\n3\\ufe0f\\u20e3 Do NOT introduce performance regressions.\\n4\\ufe0f\\u20e3 Do NOT simplify by deleting logic \\u2014 reason carefully and preserve semantic intent.\\n5\\ufe0f\\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\\n\\nImportant adversarial constraints:\\n- Fixing one complexity MUST NOT worsen the other.\\n- Avoid naive solutions that \\u201chack around\\u201d the issue.\\n- Prefer structured design improvement, not cosmetic edits.\\n\\nDeliverables:\\n- Implement the required modifications directly in the relevant files.\\n- Update only code that is necessary.\\n- Do not change unrelated behavior.",
+    "final_prompt": "You are modifying the `synthcomplex` codebase.\n\nThe analyzer has identified the following interacting complexity problems:\n- Function `process_nested_data` in `high_complex.py` has very high branching complexity\n- Hidden mutable global state `app_config` in `implicit_state.py` impacting execution behavior\n\nYour task:\n1\ufe0f\u20e3 Resolve BOTH issues in a single clean code modification.\n2\ufe0f\u20e3 Maintain full backwards-compatible behavior \u2014 users should see no change unless logically required.\n3\ufe0f\u20e3 Do NOT introduce performance regressions.\n4\ufe0f\u20e3 Do NOT simplify by deleting logic \u2014 reason carefully and preserve semantic intent.\n5\ufe0f\u20e3 Ensure the final code is deterministic, safe, and easier to maintain.\n\nImportant adversarial constraints:\n- Fixing one complexity MUST NOT worsen the other.\n- Avoid naive solutions that \u201chack around\u201d the issue.\n- Prefer structured design improvement, not cosmetic edits.\n\nDeliverables:\n- Implement the required modifications directly in the relevant files.\n- Update only code that is necessary.\n- Do not change unrelated behavior.",
     "agent_result": {
       "success_flag": true,
       "duration_seconds": 111.3,
@@ -161,7 +173,7 @@ The [`test_results.json`](results/test_results.json) file contains a list of tes
 ```
 ---
 
-## 8. Repository Structure
+## 9. Repository Structure
 
 ```
 agent-evaluator/
@@ -185,13 +197,3 @@ agent-evaluator/
 └── docs/
     └── ...                    # Additional documentation
 ```
-## 9. Future Enhancements
-
-This project lays the groundwork for a robust AI agent evaluation framework. Several areas are ripe for 
-future development:
-
-* **Advanced Prompt Generation pipeline**: Leverages DSPy Bootstrap optimization to automatically evolve smarter, more nuanced adversarial prompts by using the dataset curated from this pipeline and optimising for confusion score.  
-* **Expanded Complexity Detectors**: Implement additional detectors for other code quality issues, such as security vulnerabilities, performance bottlenecks, or non-idiomatic code patterns.
-* **Refined Scoring Metrics**: Introduce more granular behavioral scoring metrics, potentially 
-    incorporating agent output analysis (e.g., diff analysis for semantic correctness) or user feedback.
-*   **Support for Diverse Agents**: Extend `GeminiRunner` to support a wider range of AI coding agents(e.g., GPT-based agents, open-source models).
