@@ -72,7 +72,7 @@ The evaluation process is divided into five main stages:
 
 This project lays the groundwork for a robust AI agent evaluation framework. Some future enhancements include:
 
-* **Advanced Prompt Generation pipeline**: Leverages DSPy Bootstrap optimization to automatically evolve smarter, more nuanced adversarial prompts by using the dataset curated from this pipeline and optimising for confusion score.  
+* **Advanced Prompt Generation pipeline**: Leverages **DSPy Bootstrap and MIPROv2** optimization to automatically evolve smarter, more nuanced adversarial prompts by using the dataset curated from this pipeline and optimising for confusion score.  
 * **Expanded Complexity Detectors**: Implement additional detectors for other code quality issues, such as security vulnerabilities, performance bottlenecks, or non-idiomatic code patterns.
 * **Refined Scoring Metrics**: Introduce more granular behavioral scoring metrics, potentially 
     incorporating agent output analysis (e.g., diff analysis for semantic correctness) or user feedback.
